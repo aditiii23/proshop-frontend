@@ -30,7 +30,7 @@ export const listProducts =
       dispatch({ type: PRODUCT_LIST_REQUEST })
 
       const { data } = await axios.get(
-        `${process.env.URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        `${process.env.REACT_PUBLIC_API_URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
       )
 
       console.log(data)
@@ -54,7 +54,9 @@ export const listProductsDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`${process.env.URL}/api/products/${id}`)
+    const { data } = await axios.get(
+      `${process.env.REACT_PUBLIC_API_URL}/api/products/${id}`
+    )
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -87,7 +89,10 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     }
 
-    await axios.delete(`${process.env.URL}/api/products/${id}`, config)
+    await axios.delete(
+      `${process.env.REACT_PUBLIC_API_URL}/api/products/${id}`,
+      config
+    )
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
@@ -120,7 +125,7 @@ export const createProduct = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      `${process.env.URL}/api/products`,
+      `${process.env.REACT_PUBLIC_API_URL}/api/products`,
       {},
       config
     )
@@ -158,7 +163,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `${process.env.URL}/api/products/${product._id}`,
+      `${process.env.REACT_PUBLIC_API_URL}/api/products/${product._id}`,
       product,
       config
     )
@@ -199,7 +204,7 @@ export const createProductReview =
       }
 
       await axios.post(
-        `${process.env.URL}/api/products/${productId}/reviews`,
+        `${process.env.REACT_PUBLIC_API_URL}/api/products/${productId}/reviews`,
         review,
         config
       )
@@ -224,7 +229,9 @@ export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST })
 
-    const { data } = await axios.get(`${process.env.URL}/api/products/top`)
+    const { data } = await axios.get(
+      `${process.env.REACT_PUBLIC_API_URL}/api/products/top`
+    )
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
