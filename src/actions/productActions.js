@@ -30,7 +30,7 @@ export const listProducts =
       dispatch({ type: PRODUCT_LIST_REQUEST })
 
       const { data } = await axios.get(
-        `${process.env.REACT_PUBLIC_API_URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        `${process.env.REACT_APP_API_URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
       )
 
       console.log(data)
@@ -55,7 +55,7 @@ export const listProductsDetails = (id) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
     const { data } = await axios.get(
-      `${process.env.REACT_PUBLIC_API_URL}/api/products/${id}`
+      `${process.env.REACT_APP_API_URL}/api/products/${id}`
     )
 
     dispatch({
@@ -90,7 +90,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `${process.env.REACT_PUBLIC_API_URL}/api/products/${id}`,
+      `${process.env.REACT_APP_API_URL}/api/products/${id}`,
       config
     )
 
@@ -125,7 +125,7 @@ export const createProduct = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      `${process.env.REACT_PUBLIC_API_URL}/api/products`,
+      `${process.env.REACT_APP_API_URL}/api/products`,
       {},
       config
     )
@@ -163,7 +163,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `${process.env.REACT_PUBLIC_API_URL}/api/products/${product._id}`,
+      `${process.env.REACT_APP_API_URL}/api/products/${product._id}`,
       product,
       config
     )
@@ -204,7 +204,7 @@ export const createProductReview =
       }
 
       await axios.post(
-        `${process.env.REACT_PUBLIC_API_URL}/api/products/${productId}/reviews`,
+        `${process.env.REACT_APP_API_URL}/api/products/${productId}/reviews`,
         review,
         config
       )
@@ -230,7 +230,7 @@ export const listTopProducts = () => async (dispatch) => {
     dispatch({ type: PRODUCT_TOP_REQUEST })
 
     const { data } = await axios.get(
-      `${process.env.REACT_PUBLIC_API_URL}/api/products/top`
+      `${process.env.REACT_APP_API_URL}/api/products/top`
     )
 
     dispatch({
